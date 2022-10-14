@@ -19,6 +19,9 @@ function setup() {
 		element.addEventListener("contextmenu", (e) => e.preventDefault());
 	}
 
+	delBtn = createButton("Remove Cells");
+	delBtn.mousePressed(removeCells);
+
 	colorMode(HSL);
 }
 
@@ -52,6 +55,14 @@ function mousePressed() {
 			const mouseR = floor(rows * (mouseY / height));
 			const mouseC = floor(columns * (mouseX / width));
 			cells[mouseR][mouseC] = 0;
+		}
+	}
+}
+
+function removeCells() {
+	for (let r = 0; r < rows; r++) {
+		for (let c = 0; c < columns; c++) {
+			cells[r][c] = 0;
 		}
 	}
 }
