@@ -14,6 +14,11 @@ function setup() {
 		}
 	}
 
+	// disable context menu
+	for (let element of document.getElementsByClassName("p5Canvas")) {
+		element.addEventListener("contextmenu", (e) => e.preventDefault());
+	}
+
 	colorMode(HSL);
 }
 
@@ -37,5 +42,16 @@ function mouseDragged() {
 		const mouseR = floor(rows * (mouseY / height));
 		const mouseC = floor(columns * (mouseX / width));
 		cells[mouseR][mouseC] = 100;
+	}
+}
+
+// remove cell on right click
+function mousePressed() {
+	if (mouseButton === RIGHT) {
+		if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+			const mouseR = floor(rows * (mouseY / height));
+			const mouseC = floor(columns * (mouseX / width));
+			cells[mouseR][mouseC] = 0;
+		}
 	}
 }
