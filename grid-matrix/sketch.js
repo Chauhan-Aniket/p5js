@@ -31,3 +31,11 @@ function draw() {
 		}
 	}
 }
+
+function mouseDragged() {
+	if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+		const mouseR = floor(rows * (mouseY / height));
+		const mouseC = floor(columns * (mouseX / width));
+		cells[mouseR][mouseC] = 100;
+	}
+}
